@@ -1,0 +1,19 @@
+language: python
+python:
+  - "3.5"
+
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+# command to run tests
+script:
+  - make -C docs html
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $6qMel3r_shcDbdGdcbk1PA  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  local-dir: sphinx-test-doc/html
+  on:
+    branch: master
